@@ -16,9 +16,9 @@ class FileController extends Controller
             return redirect()->route('account.files.create', $file);
         }
         
-        $this->authorize('touch');
-        
-        return 'account created';
+        $this->authorize('touch', $file);
+     
+        return view('account.files.create', compact('file'));
     }
     
     private function createAndReturnSkeletonFile()
