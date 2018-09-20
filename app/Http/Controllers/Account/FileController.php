@@ -16,6 +16,8 @@ class FileController extends Controller
             return redirect()->route('account.files.create', $file);
         }
         
+        $this->authorize('touch');
+        
         return 'account created';
     }
     
