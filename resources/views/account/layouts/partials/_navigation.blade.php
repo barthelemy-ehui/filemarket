@@ -2,7 +2,7 @@
     <p class="menu-label">Files</p>
     <ul class="menu-list">
         <li>
-            <a href="">Your files</a>
+            <a href="{{ route('account') }}">Your files</a>
         </li>
         <li>
             <a href="">Sell a files</a>
