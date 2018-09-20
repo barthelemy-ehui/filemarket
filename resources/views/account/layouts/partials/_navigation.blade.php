@@ -5,7 +5,7 @@
             <a href="{{ route('account') }}">Your files</a>
         </li>
         <li>
-            <a href="">Sell a files</a>
+            <a href="{{ route('account.files.create.start') }}">Sell a files</a>
         </li>
     </ul>
 
