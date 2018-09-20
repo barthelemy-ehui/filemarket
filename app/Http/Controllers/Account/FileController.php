@@ -3,11 +3,21 @@
 namespace App\Http\Controllers\Account;
 
 use App\File;
+use App\Http\Requests\File\StoreFileRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class FileController extends Controller
 {
+    public function index(Request $request)
+    {
+        $files = auth()->user()->files()->latest()->finished()->get();
+        
+        return view('account.files.index', [
+            'files' => $files
+        ]);
+    }
+    
     public function create(File $file)
     {
         if(!$file->exists) {
@@ -19,6 +29,21 @@ class FileController extends Controller
         $this->authorize('touch', $file);
      
         return view('account.files.create', compact('file'));
+    }
+    
+    
+    public function store(File $file, StoreFileRequest $request)
+    {
+        $this->authorize('touch', $file);
+        $file->fill($request->only(['title','overview','overview_short','price']));
+        $file->finished = true;
+        
+        $file->save();
+        
+        // Update this
+        // Flash messages
+        //
+        return redirect()->route('account');
     }
     
     private function createAndReturnSkeletonFile()
