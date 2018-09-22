@@ -40,10 +40,18 @@ class FileController extends Controller
         
         $file->save();
         
-        // Update this
-        // Flash messages
-        //
-        return redirect()->route('account');
+        
+        return redirect()->route('account.files.index')
+            ->withSuccess('Thanks, submitting for review');
+    }
+    
+    public function edit(File $file)
+    {
+        $this->authorize('touch', $file);
+        
+        return view('account.files.edit', [
+            'file' => $file
+        ]);
     }
     
     private function createAndReturnSkeletonFile()
