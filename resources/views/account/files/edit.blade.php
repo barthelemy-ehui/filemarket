@@ -2,9 +2,11 @@
 
 @section('account.content')
     <h1 class="title">Make changes to {{ $file->title }}</h1>
-    <form action="#" method="post" class="form">
+    <form action="{{ route('account.files.update', $file) }}" method="post" class="form">
         {{ csrf_field() }}
-        {{ method_field('PATH') }}
+        {{ method_field('patch') }}
+
+        <input type="hidden" name="live" value="false">
 
         <div class="field">
             <p class="control">
