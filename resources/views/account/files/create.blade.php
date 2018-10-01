@@ -4,6 +4,11 @@
     <h1 class="title">Sell a file</h1>
     <form action="{{ route('account.files.store', $file) }}" method="post" class="form">
         {{ csrf_field() }}
+
+        <div class="field">
+            <div id="file" class="dropzone"></div>
+        </div>
+
         <div class="field">
             <label for="title" class="label">Title</label>
             <p class="control">
@@ -55,4 +60,8 @@
         </div>
 
     </form>
+@endsection
+
+@section('scripts')
+    @include('account.files.partials._file_upload_js')
 @endsection
