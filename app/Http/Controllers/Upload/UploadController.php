@@ -28,11 +28,11 @@ class UploadController extends Controller
         Storage::disk('local')->putFileAs(
             'files/' . $file->identifier,
             $uploadedFile,
-            'test.png'
+            $upload->filename
         );
         
         return response()->json([
-            'id' => 1
+            'id' => $upload->id
         ]);
     }
     
@@ -56,5 +56,15 @@ class UploadController extends Controller
     protected function generateFilename(UploadedFile $uploadedFile)
     {
         return $uploadedFile->getClientOriginalName();
+    }
+    
+    public function destroy(File $file, Upload $upload) {
+        
+        $this->authorize('touch', $file);
+        $this->authorize('touch', $upload);
+        
+        // Prevent all files from being removed when we're edition a file
+        $upload->delete();
+        
     }
 }
