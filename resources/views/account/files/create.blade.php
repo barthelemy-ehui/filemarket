@@ -7,6 +7,9 @@
 
         <div class="field">
             <div id="file" class="dropzone"></div>
+            @if ($errors->has('uploads'))
+                <p class="help is-danger">{{ $errors->first('uploads')  }}</p>
+            @endif
         </div>
 
         <div class="field">
