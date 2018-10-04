@@ -34,6 +34,14 @@
                     {{ $approval->overview }}
                 </p>
             @endif
+
+            @if (($uploads = $file->uploads()->where('approved', false)->get())->count())
+                <strong>Uploads</strong>
+                @foreach ($uploads as $upload)
+                    <p>{{ $upload->filename }}</p>
+                @endforeach
+            @endif
+
         </div>
     </div>
 </article>

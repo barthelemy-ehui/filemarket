@@ -5,6 +5,8 @@
     <form action="{{ route('account.files.store', $file) }}" method="post" class="form">
         {{ csrf_field() }}
 
+        <input type="hidden" name="live" value="false">
+
         <div class="field">
             <div id="file" class="dropzone"></div>
             @if ($errors->has('uploads'))
