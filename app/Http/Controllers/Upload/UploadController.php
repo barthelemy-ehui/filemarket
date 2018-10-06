@@ -63,7 +63,9 @@ class UploadController extends Controller
         $this->authorize('touch', $file);
         $this->authorize('touch', $upload);
         
-        // Prevent all files from being removed when we're edition a file
+        if($file->uploads()->count() === 1) {
+            return response()->json(null, 422);
+        }
         $upload->delete();
         
     }
