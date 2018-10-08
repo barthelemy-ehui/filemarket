@@ -13,7 +13,7 @@
                 </a>
 
                 @role('admin')
-                    <a href="#" class="navbar-item">
+                    <a href="{{ route('admin.index') }}" class="navbar-item">
                         Admin
                     </a>
                 @endrole
