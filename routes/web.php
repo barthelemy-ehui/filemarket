@@ -18,6 +18,11 @@ Route::group(['prefix' => '/account', 'middleware' => ['auth'], 'namespace' => '
 
 Route::group(['prefix' => '/admin','namespace' => 'Admin','middleware' => ['auth','admin']], function(){
     Route::get('/', 'AdminController@index')->name('admin.index');
+    
+    Route::group(['prefix' => '/files'], function() {
+        Route::get('/', 'FileNewController@index')->name('admin.files.new.index');
+        Route::patch('/{file}', 'FileNewController@update')->name('admin.files.new.update');
+    });
 });
 
 Route::post('/{file}/upload', 'Upload\UploadController@store')->name('upload.store');

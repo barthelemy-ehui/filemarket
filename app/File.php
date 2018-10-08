@@ -77,6 +77,27 @@ class File extends Model
         return false;
     }
     
+    public function approve()
+    {
+        $this->updateToBeVisible();
+        $this->approveAllUploads();
+    }
+    
+    public function approveAllUploads()
+    {
+        $this->uploads()->update([
+            'approved' => true
+        ]);
+    }
+    
+    public function updateToBeVisible()
+    {
+        $this->update([
+            'live' => true,
+            'approved' => true,
+        ]);
+    }
+    
     public function currentPropertiesDifferToGiven(array $properties) {
         return array_only($this->toArray(),self::APPROVAL_PROPERTIES) != $properties;
     }
