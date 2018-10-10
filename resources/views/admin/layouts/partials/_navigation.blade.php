@@ -5,7 +5,7 @@
             <a href="{{ route('admin.files.new.index') }}">Approved new files</a>
         </li>
         <li>
-            <a href="#">Approved updated files</a>
+            <a href="{{ route('admin.files.updated.index') }}">Approved updated files</a>
         </li>
     </ul>
 </aside>

@@ -18,8 +18,13 @@
                 </form>
 
                 <p class="level-item">
-                    <a href="">Reject</a>
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('reject-{{ $file->id }}').submit();">Reject</a>
                 </p>
+
+                <form action="{{ route('admin.files.new.destroy', $file) }}" id="reject-{{ $file->id }}" method="POST" class="is-hidden">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                </form>
             </div>
         </div>
     @endslot
