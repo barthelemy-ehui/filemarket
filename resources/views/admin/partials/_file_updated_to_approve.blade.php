@@ -9,8 +9,12 @@
                     <a href="">Preview changes</a>
                 </p>
                 <p class="level-item">
-                    <a href="#">Approved</a>
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('approved-{{$file->id}}').submit();">Approve</a>
                 </p>
+                <form action="{{ route('admin.files.updated.update', $file) }}" id="approved-{{ $file->id }}" method="POST" class="is-hidden">
+                    {{ csrf_field() }}
+                    {{ method_field('PATCH') }}
+                </form>
 
                 <p class="level-item">
                     <a href="#">Reject</a>
