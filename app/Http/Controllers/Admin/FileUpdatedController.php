@@ -25,4 +25,12 @@ class FileUpdatedController extends Controller
         
         return back()->withSuccess("{$file->title} changes have been approved.");
     }
+    
+    public function destroy(File $file)
+    {
+        $file->deleteAllApprovals();
+        $file->deleteUnapprovedUpload();
+        
+        return back()->withSuccess("{$file->title} changes have been rejected.");
+    }
 }
