@@ -2,7 +2,7 @@
     <div class="media-content">
         <div class="content">
             <strong>
-                <a href="#">{{ $file->title }}</a>
+                <a href="{{ route('files.show', $file) }}">{{ $file->title }}</a>
             </strong>
             <br/>
             {{ $file->overview_short }}
