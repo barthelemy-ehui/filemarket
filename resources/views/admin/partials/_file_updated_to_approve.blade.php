@@ -6,7 +6,7 @@
                     {{ $file->isFree() ? 'Free' : $file->price . '€' }}
                 </p>
                 <p class="level-item">
-                    <a href="">Preview changes</a>
+                    <a href="{{ route('admin.files.show', $file) }}">Preview changes</a>
                 </p>
                 <p class="level-item">
                     <a href="#" onclick="event.preventDefault(); document.getElementById('approved-{{$file->id}}').submit();">Approve</a>
