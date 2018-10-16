@@ -27,10 +27,10 @@
                         </p>
                     </div>
                     <div class="column">
-                        <h1 class="title"></h1>
-                        <p>
-
-                        </p>
+                        <h1 class="title">What you get</h1>
+                        @foreach($uploads as $upload)
+                            <p>{{ $upload->filename }}</p>
+                        @endforeach
                     </div>
                 </div>
             </div>
