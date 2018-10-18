@@ -15,6 +15,8 @@ class CheckoutController extends Controller
             return back();
         }
         
+        
+        
         return back()->withSuccess('We\'ve email your download link to you.');
     }
 }
