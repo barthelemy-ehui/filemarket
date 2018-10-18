@@ -140,6 +140,11 @@ class File extends Model
         return array_only($this->toArray(),self::APPROVAL_PROPERTIES) != $properties;
     }
     
+    public function calculateCommission()
+    {
+        return (config('filemarket.sales.commission')/100) * $this->price;
+    }
+    
     public function createApproval(array $approvalProperties)
     {
         $this->approvals()->create($approvalProperties);
