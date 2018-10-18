@@ -8,7 +8,7 @@
                 <a href="#" class="navbar-item" onclick="event.preventDefault();document.getElementById('logout').submit();">
                     Sign out
                 </a>
-                <a href="#" class="navbar-item">
+                <a href="{{ route('account') }}" class="navbar-item">
                     Your account
                 </a>
 

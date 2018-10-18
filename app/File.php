@@ -40,6 +40,39 @@ class File extends Model
         return 'identifier';
     }
     
+    public function visible()
+    {
+        if(auth()->user()->isAdmin()) {
+            return true;
+        }
+
+        if(auth()->user()->isTheSameAs($this->user())) {
+            return true;
+        }
+        
+        return $this->live && $this->approved;
+    }
+    
+    public function mergeApprovalProperties()
+    {
+        $this->update(
+            array_only(
+                $this->approvals->first()->toArray(),
+                self::APPROVAL_PROPERTIES
+            )
+        );
+    }
+    
+    public function deleteAllApprovals()
+    {
+        $this->approvals()->delete();
+    }
+    
+    public function deleteUnapprovedUpload()
+    {
+        $this->uploads()->unapproved()->delete();
+    }
+    
     public function scopeFinished(Builder $builder)
     {
         return $builder->where('finished', true);
@@ -75,6 +108,27 @@ class File extends Model
         }
         
         return false;
+    }
+    
+    public function approve()
+    {
+        $this->updateToBeVisible();
+        $this->approveAllUploads();
+    }
+    
+    public function approveAllUploads()
+    {
+        $this->uploads()->update([
+            'approved' => true
+        ]);
+    }
+    
+    public function updateToBeVisible()
+    {
+        $this->update([
+            'live' => true,
+            'approved' => true,
+        ]);
     }
     
     public function currentPropertiesDifferToGiven(array $properties) {
