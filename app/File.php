@@ -97,6 +97,11 @@ class File extends Model
         return $this->belongsTo(User::class);
     }
     
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+    
     public function needsApproval(array $approvalProperties)
     {
         if($this->currentPropertiesDifferToGiven($approvalProperties)){
@@ -133,6 +138,11 @@ class File extends Model
     
     public function currentPropertiesDifferToGiven(array $properties) {
         return array_only($this->toArray(),self::APPROVAL_PROPERTIES) != $properties;
+    }
+    
+    public function calculateCommission()
+    {
+        return (config('filemarket.sales.commission')/100) * $this->price;
     }
     
     public function createApproval(array $approvalProperties)
