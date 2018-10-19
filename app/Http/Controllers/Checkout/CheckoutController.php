@@ -17,7 +17,7 @@ class CheckoutController extends Controller
             return back();
         }
         
-        Dispatch(new CreateSale($file, $request->email));
+        dispatch(new CreateSale($file, $request->email));
         
         return back()->withSuccess('We\'ve email your download link to you.');
     }
