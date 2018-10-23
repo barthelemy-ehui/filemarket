@@ -149,4 +149,9 @@ class File extends Model
     {
         $this->approvals()->create($approvalProperties);
     }
+    
+    public function matchesSale(Sale $sale)
+    {
+        return $this->sales->contains($sale);
+    }
 }

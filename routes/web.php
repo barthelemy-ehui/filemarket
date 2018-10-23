@@ -46,3 +46,4 @@ Route::post('/{file}/upload', 'Upload\UploadController@store')->name('upload.sto
 Route::delete('/{file}/upload/{upload}', 'Upload\UploadController@destroy')->name('upload.destroy');
 
 Route::get('/{file}','Files\FileController@show')->name('files.show');
+Route::get('/{file}/{sale}','Files\FileDownloadController@show')->name('files.download');
