@@ -3,8 +3,9 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/account/connect', 'Account\MarketplaceConnectController@index')->name('account.connect');
 
-Route::group(['prefix' => '/account', 'middleware' => ['auth'], 'namespace' => 'Account'], function(){
+Route::group(['prefix' => '/account', 'middleware' => ['auth','needs.marketplace'], 'namespace' => 'Account'], function(){
     Route::get('/','AccountController@index')->name('account');
     Route::group(['prefix' => '/files'], function() {
         Route::get('/', 'FileController@index')->name('account.files.index');
