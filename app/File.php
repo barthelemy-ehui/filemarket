@@ -154,4 +154,9 @@ class File extends Model
     {
         return $this->sales->contains($sale);
     }
+    
+    public function getUploadList()
+    {
+        return $this->uploads()->approved()->get()->pluck('path')->toArray();
+    }
 }
