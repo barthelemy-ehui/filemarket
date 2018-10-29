@@ -16,12 +16,19 @@ class MarketplaceConnectController extends Controller
     
     public function index()
     {
+        
+        session(['stripe_token' => str_random(60)]);
         return view('account.marketplaces.index');
     }
     
     public function store(Request $request, Guzzle $guzzle)
     {
         if(!$request->code){
+            return redirect()->route('account.connect');
+        }
+        
+        
+        if($request->state !== session('stripe_token')) {
             return redirect()->route('account.connect');
         }
         
