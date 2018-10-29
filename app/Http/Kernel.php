@@ -62,6 +62,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => \App\Http\Middleware\AbortIfNotAdmin::class,
         'needs.marketplace' => \App\Http\Middleware\RedirectIfMarketplaceNotConnected::class,
+        'has.marketplace' => \App\Http\Middleware\RedirectIfMarketplaceConnected::class,
 
     ];
 }
