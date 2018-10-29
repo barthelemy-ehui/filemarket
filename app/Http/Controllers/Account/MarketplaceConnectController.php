@@ -11,7 +11,7 @@ class MarketplaceConnectController extends Controller
     
     public function __construct()
     {
-        $this->middleware(['auth']);
+        $this->middleware(['auth','has.marketplace']);
     }
     
     public function index()
