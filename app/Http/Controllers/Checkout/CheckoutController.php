@@ -39,5 +39,9 @@ class CheckoutController extends Controller
         }catch(\Exception $e) {
             return back()->withError('Something went wront while processing your payment.');
         }
+    
+        dispatch(new CreateSale($file, $request->stripeEmail));
+        
+        return back()->withSuccess('Payment complete. We\'ve email your download link to you.');
     }
 }
