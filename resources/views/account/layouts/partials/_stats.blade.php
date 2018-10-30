@@ -4,13 +4,13 @@
             <div class="level-item has-text-centered">
                 <div>
                     <div class="heading">Files</div>
-                    <div class="title">0</div>
+                    <div class="title">{{ $fileCount }}</div>
                 </div>
             </div>
             <div class="level-item has-text-centered">
                 <div>
                     <div class="heading">Sales</div>
-                    <div class="title">0</div>
+                    <div class="title">{{ $saleCount }}</div>
                 </div>
             </div>
             <div class="level-item has-text-centered">
