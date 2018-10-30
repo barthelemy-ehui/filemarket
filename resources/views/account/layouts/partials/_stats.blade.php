@@ -16,13 +16,13 @@
             <div class="level-item has-text-centered">
                 <div>
                     <div class="heading">Sales this month</div>
-                    <div class="title">0€</div>
+                    <div class="title">{{ $thisMonthEarned }}€</div>
                 </div>
             </div>
             <div class="level-item has-text-centered">
                 <div>
                     <div class="heading">Lifetime sales</div>
-                    <div class="title">0€</div>
+                    <div class="title">{{ $lifetimeEarned }}€</div>
                 </div>
             </div>
         </div>

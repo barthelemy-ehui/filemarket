@@ -15,6 +15,8 @@ class AccountStatsComposer
         $view->with([
             'fileCount' => $files->count(),
             'saleCount' => $sales->count(),
+            'thisMonthEarned' => $user->saleValueThisMonth(),
+            'lifetimeEarned' => $user->saleValueOverLifetime(),
         ]);
     }
 }
