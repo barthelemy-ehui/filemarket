@@ -1,4 +1,4 @@
-<form action="#" method="POST">
+<form action="{{ route('checkout.payment', $file) }}" method="POST">
     {{ csrf_field() }}
     €{{ $file->price }}
     <script
